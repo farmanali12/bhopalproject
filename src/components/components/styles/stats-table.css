@@ -1,0 +1,152 @@
+#table-list {
+  height: auto;
+  overflow: auto;
+  border-radius: 10px;
+  background-color: var(--primaryBlue);
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 2px 20px rgb(0 0 0 / 14%);
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  border-radius: 4px;
+}
+
+table tr {
+  border-bottom: 1px solid var(--white);
+  padding: 10px;
+}
+
+table th,
+table td {
+  padding: 15px;
+  text-align: center;
+  color: var(--white);
+  font-size: 12px;
+}
+
+table th {
+  font-size: 13px;
+  letter-spacing: 2px;
+  background-color: #271c1c;
+}
+
+.platform-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.platform-div div {
+  padding: 5px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.platform-div p {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #605bc7;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  table td::before {
+    /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  #table-list {
+    top: 20px;
+    height: calc(100vh - 100px);
+    margin-left: 15px;
+  }
+
+  .platform-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .platform-div div {
+    margin-right: 10px;
+    padding: 0px 0px;
+    display: flex;
+    align-items: center;
+  }
+
+  .platform-div p {
+    margin-left: 5px;
+  }
+}
+
+.table-view-container {
+  width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+  #table-list {
+    margin-left: 105px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #table-list {
+    margin-left: 235px;
+    height: calc(100vh - 32vh);
+    overflow: auto;
+  }
+}

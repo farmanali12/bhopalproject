@@ -1,0 +1,326 @@
+.menu {
+  background: var(--primaryBlue);
+  width: 100vw;
+  height: var(--navbarHeaderHeight);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  outline: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 8px 0 10px -6px rgb(0 0 0 / 14%);
+}
+.menu #nav-check {
+  display: none;
+  z-index: -100;
+}
+
+.nav-header h1 {
+  color: #605bc7;
+}
+
+.menu .nav-header {
+  background-color: var(--white);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.menu .logo {
+  width: auto;
+  height: 46px;
+  margin: 6px 16px;
+  position: relative;
+  left: 40px;
+  border-radius: 50px;
+  padding-right: 40px;
+}
+.menu .bbps-logo {
+  height: calc(var(--navbarHeaderHeight) - 30px);
+  width: auto;
+  position: relative;
+  right: calc(30px / 2);
+}
+.menu .b-mnemonic-logo {
+  height: calc(var(--navbarHeaderHeight) - 20px);
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 10px;
+}
+.menu .b-mnemonic-logo .mnemonic-logo {
+  height: calc(100% - 17px);
+  margin-bottom: 5px;
+  width: auto;
+}
+.menu .b-mnemonic-logo p {
+  font-size: 10px;
+}
+
+.show-menu-button,
+.hide-menu-button {
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+.show-menu-button span,
+.hide-menu-button span {
+  width: 20px;
+  border-top: 2px solid var(--lightBlack);
+  margin: 0px;
+}
+.hide-menu-button span {
+  width: 20px;
+  border-top: 2px solid var(--white);
+  margin: 0px;
+}
+.show-menu-button {
+  position: absolute;
+  top: calc(var(--navbarHeaderHeight) / 2 - 20px);
+  left: 6px;
+}
+.hide-menu-button {
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  right: 6px;
+}
+.hide-menu-button > span:first-child {
+  transform: rotateZ(45deg);
+}
+.hide-menu-button > span:last-child {
+  transform: rotateZ(-45deg) translateY(-1px) translateX(1px);
+}
+.bg-menu-overlay {
+  position: absolute;
+  background-color: rgba(25, 25, 25, 0.5);
+  backdrop-filter: blur(2px);
+  height: 100vh;
+  width: 100vw;
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+  top: 0;
+  opacity: 0;
+}
+.menu ul {
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  height: 100vh;
+  width: 240px;
+  background-color: var(--primaryBlue);
+  transition: all 0.3s ease-in-out;
+  list-style: none;
+  margin: 0;
+  padding: 80px 20px 0px;
+  display: flex;
+  margin-top: -80px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.menu ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.menu ul::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #631dd4;
+  border: 1px solid var(--primaryBlue);
+}
+
+/* Handle */
+.menu ul::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #f2f2f2;
+  border: 1px solid var(--primaryBlue);
+}
+
+/* Handle on hover */
+.menu ul::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
+}
+
+.menu #nav-check:not(:checked) ~ .bg-menu-overlay {
+  right: 100vw;
+}
+.menu #nav-check:checked ~ .bg-menu-overlay {
+  right: 0;
+  opacity: 1;
+}
+
+.menu #nav-check:not(:checked) ~ ul {
+  right: 100vw;
+}
+
+.menu #nav-check:checked ~ ul {
+  right: calc(100% - 240px);
+}
+
+.menu ul li {
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: all 0.15s linear;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  color: var(--white);
+}
+
+.menu ul label:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.menu ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.menu ul li:focus {
+  outline: none;
+}
+.menu ul li.active-link {
+  background-color: #605bc7;
+  color: var(--primaryBlue);
+}
+
+.menu ul li .link-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 20px;
+}
+
+.menu ul li span {
+  text-align: center;
+  color: var(--white);
+}
+
+.link-icon img {
+  width: 25px;
+  height: 25px;
+}
+
+@media screen and (min-width: 500px) {
+  .menu {
+    width: 90px;
+    height: calc(100vh - 0px);
+    /* margin: 20px; */
+    /* border-radius: 8px; */
+    overflow: hidden;
+  }
+  .menu .nav-header {
+    background-color: var(--primaryBlue);
+    height: auto;
+  }
+  .menu .logo {
+    width: calc(90px - 30px);
+    height: 60px;
+    margin: 20px 10px;
+    position: static;
+    padding-right: 0px;
+  }
+  .nav-header h1 {
+    display: none;
+  }
+  .menu .bbps-logo,
+  .menu .b-mnemonic-logo {
+    display: none;
+  }
+  .show-menu-button,
+  .hide-menu-button {
+    display: none;
+  }
+  .bg-menu-overlay {
+    display: none;
+  }
+  .menu ul {
+    width: auto;
+    height: calc(100vh - 66px - 40px);
+    margin-top: 80px;
+    padding: 40px 10px;
+    top: 0;
+  }
+  .menu #nav-check:not(:checked) ~ ul,
+  .menu #nav-check:checked ~ ul {
+    right: 0;
+    left: 0;
+  }
+  .menu ul li {
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 4px;
+  }
+  .menu ul li .link-icon {
+    margin-right: 0px;
+  }
+  .menu ul li span {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  .link-icon img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .menu {
+    width: 220px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+  }
+
+  .menu .logo {
+    width: auto;
+    height: 40px;
+    padding-right: 0px;
+  }
+  .nav-header h1 {
+    color: #605bc7;
+    display: block;
+  }
+  .menu ul {
+    padding: 40px 20px;
+  }
+  .menu ul li {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+  .menu ul li .link-icon {
+    margin-right: 14px;
+  }
+  .menu ul li span {
+    margin-top: 0px;
+    font-size: 14px;
+  }
+
+  .menu ul::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  .menu ul::-webkit-scrollbar-track {
+    border: 4px solid var(--primaryBlue);
+  }
+
+  .menu ul::-webkit-scrollbar-thumb {
+    border: 4px solid var(--primaryBlue);
+  }
+
+  .link-icon img {
+    width: 25px;
+    height: 25px;
+  }
+}
